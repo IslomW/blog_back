@@ -11,7 +11,9 @@ import {create, getAll, getLastTags, getOne, remove, update} from "./controllers
 import handleValidationErrors from "./utils/handleValidationErrors.js";
 
 
-mongoose.connect("mongodb+srv://admin:admin@cluster0.cioyvnj.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect(
+    process.env.MONGODB_URI
+)
     .then(() => console.log("DB ok"))
     .catch((err) => console.log("DB error", err));
 
@@ -50,7 +52,7 @@ app.delete('/posts/:id',checkAuth, remove);
 app.patch('/posts/:id', checkAuth, handleValidationErrors, update);
 
 
-app.listen(3500, (err) => {
+app.listen(process.env.PORT|| 3500, (err) => {
     if (err) {
         return console.log(err);
     }
