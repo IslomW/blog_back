@@ -12,7 +12,7 @@ import handleValidationErrors from "./utils/handleValidationErrors.js";
 
 
 mongoose.connect(
-    process.env.MONGODB_URI
+    'mongodb+srv://admin:admin@cluster0.cioyvnj.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0'
 )
     .then(() => console.log("DB ok"))
     .catch((err) => console.log("DB error", err));
