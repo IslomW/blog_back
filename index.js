@@ -52,10 +52,7 @@ app.delete('/posts/:id',checkAuth, remove);
 app.patch('/posts/:id', checkAuth, handleValidationErrors, update);
 
 
-app.listen(process.env.PORT || 3000, (err) => {
-    if (err) {
-        return console.log(err);
-    }
-    console.log("Server ok")
+app.listen(process.env.PORT || 3000, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 
