@@ -18,6 +18,7 @@ mongoose.connect(
     .catch((err) => console.log("DB error", err));
 
 const app = express();
+const port = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 
@@ -52,7 +53,7 @@ app.delete('/posts/:id',checkAuth, remove);
 app.patch('/posts/:id', checkAuth, handleValidationErrors, update);
 
 
-app.listen(process.env.PORT || 3000, function(){
+app.listen(port, function(){
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 
